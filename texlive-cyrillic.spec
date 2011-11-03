@@ -1,3 +1,9 @@
+# revision 23396
+# category Package
+# catalog-ctan /macros/latex/required/cyrillic
+# catalog-date 2011-06-16 20:40:55 +0200
+# catalog-license lppl
+# catalog-version undef
 Name:		texlive-cyrillic
 Version:	20110616
 Release:	1
@@ -8,6 +14,12 @@ License:	LPPL
 Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/cyrillic.tar.xz
 Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/cyrillic.doc.tar.xz
 Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/cyrillic.source.tar.xz
+# revision 23089
+# category TLCore
+# catalog-ctan undef
+# catalog-date undef
+# catalog-license undef
+# catalog-version undef
 Source3:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/cyrillic-bin.tar.xz
 Source4:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/cyrillic-bin.x86_64-linux.tar.xz
 BuildArch:	noarch
@@ -174,6 +186,7 @@ in a Cyrillic alphabet. This directory is part of the LaTeX
 %doc %{_texmfdistdir}/source/latex/cyrillic/ot2cmams.fdd
 %doc %{_texmfdistdir}/source/latex/cyrillic/ot2cmlh.fdd
 %doc %{_texmfdistdir}/source/latex/cyrillic/t2lhfnt.fdd
+%doc %{_tlpkgobjdir}/*.tlpobj
 
 #-----------------------------------------------------------------------
 %prep
@@ -187,3 +200,5 @@ mkdir -p %{buildroot}%{_bindir}
 cp -fa bin/x86_64-linux/* %{buildroot}%{_bindir}
 mkdir -p %{buildroot}%{_texmfdistdir}
 cp -fpar tex doc source %{buildroot}%{_texmfdistdir}
+mkdir -p %{buildroot}%{_tlpkgobjdir}
+cp -fpa tlpkg/tlpobj/*.tlpobj %{buildroot}%{_tlpkgobjdir}
