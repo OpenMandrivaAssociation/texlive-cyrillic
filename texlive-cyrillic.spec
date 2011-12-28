@@ -27,9 +27,6 @@ BuildRequires:	texlive-tlpkg
 Requires(pre):	texlive-tlpkg
 Requires(post):	texlive-kpathsea
 Provides:	texlive-cyrillic-bin = %{EVRD}
-Conflicts:	texlive-texmf <= 20110705-3
-Conflicts:	texlive-doc <= 20110705-3
-Conflicts:	texlive-source <= 20110705-3
 
 %description
 This bundle of macros files provides macro support (including
@@ -39,20 +36,12 @@ cover (between them) pretty much every language that is written
 in a Cyrillic alphabet. This directory is part of the LaTeX
 "required" distribution.
 
-%pre
-    %_texmf_mktexlsr_pre
-
 %post
-    %_texmf_mktexlsr_post
-
-%preun
-    if [ $1 -eq 0 ]; then
-	%_texmf_mktexlsr_pre
-    fi
+    %{_sbindir}/texlive.post
 
 %postun
     if [ $1 -eq 0 ]; then
-	%_texmf_mktexlsr_post
+	%{_sbindir}/texlive.post
     fi
 
 #-----------------------------------------------------------------------
@@ -187,7 +176,6 @@ in a Cyrillic alphabet. This directory is part of the LaTeX
 %doc %{_texmfdistdir}/source/latex/cyrillic/ot2cmams.fdd
 %doc %{_texmfdistdir}/source/latex/cyrillic/ot2cmlh.fdd
 %doc %{_texmfdistdir}/source/latex/cyrillic/t2lhfnt.fdd
-%doc %{_tlpkgobjdir}/*.tlpobj
 
 #-----------------------------------------------------------------------
 %prep
@@ -201,5 +189,3 @@ mkdir -p %{buildroot}%{_bindir}
 cp -fa bin/x86_64-linux/* %{buildroot}%{_bindir}
 mkdir -p %{buildroot}%{_texmfdistdir}
 cp -fpar tex doc source %{buildroot}%{_texmfdistdir}
-mkdir -p %{buildroot}%{_tlpkgobjdir}
-cp -fpa tlpkg/tlpobj/*.tlpobj %{buildroot}%{_tlpkgobjdir}
