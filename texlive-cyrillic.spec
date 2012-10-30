@@ -14,14 +14,14 @@ License:	LPPL
 Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/cyrillic.tar.xz
 Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/cyrillic.doc.tar.xz
 Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/cyrillic.source.tar.xz
-# revision 26689
+# revision 27328
 # category TLCore
 # catalog-ctan undef
 # catalog-date undef
 # catalog-license undef
 # catalog-version undef
 Source3:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/cyrillic-bin.tar.xz
-Source4:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/cyrillic-bin.x86_64-linux.tar.xz
+Source4:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/cyrillic-bin.doc.tar.xz
 BuildArch:	noarch
 BuildRequires:	texlive-tlpkg
 Requires(pre):	texlive-tlpkg
@@ -48,6 +48,8 @@ in a Cyrillic alphabet. This directory is part of the LaTeX
 %files
 %{_bindir}/rubibtex
 %{_bindir}/rumakeindex
+%{_texmfdistdir}/scripts/tetex/rubibtex.sh
+%{_texmfdistdir}/scripts/tetex/rumakeindex.sh
 %{_texmfdistdir}/tex/latex/cyrillic/cp1251.def
 %{_texmfdistdir}/tex/latex/cyrillic/cp855.def
 %{_texmfdistdir}/tex/latex/cyrillic/cp866.def
@@ -166,6 +168,8 @@ in a Cyrillic alphabet. This directory is part of the LaTeX
 %doc %{_texmfdistdir}/doc/latex/cyrillic/ot2cmams.pdf
 %doc %{_texmfdistdir}/doc/latex/cyrillic/ot2cmlh.pdf
 %doc %{_texmfdistdir}/doc/latex/cyrillic/t2lhfnt.pdf
+%doc %{_mandir}/man1/*.1*
+%doc %{_texmfdir}/doc/man/man1/*.pdf
 #- source
 %doc %{_texmfdistdir}/source/latex/cyrillic/cyinpenc.dtx
 %doc %{_texmfdistdir}/source/latex/cyrillic/cyoutenc.dtx
@@ -184,8 +188,13 @@ in a Cyrillic alphabet. This directory is part of the LaTeX
 %build
 
 %install
-# shell scripts
 mkdir -p %{buildroot}%{_bindir}
-cp -fa bin/x86_64-linux/* %{buildroot}%{_bindir}
-mkdir -p %{buildroot}%{_texmfdistdir}
+pushd %{buildroot}%{_bindir}
+    ln -sf %{_texmfdistdir}/scripts/tetex/rubibtex.sh rubibtex
+    ln -sf %{_texmfdistdir}/scripts/tetex/rumakeindex.sh rumakeindex
+popd
+mkdir -p %{buildroot}%{_datadir}
+cp -fpar texmf texmf-dist %{buildroot}%{_datadir}
 cp -fpar tex doc source %{buildroot}%{_texmfdistdir}
+mkdir -p %{buildroot}%{_mandir}/man1
+mv %{buildroot}%{_texmfdir}/doc/man/man1/*.1 %{buildroot}%{_mandir}/man1
