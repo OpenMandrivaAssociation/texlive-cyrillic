@@ -1,5 +1,6 @@
 sources:
-  "cyrillic-bin.tar.xz:"	07270e4e509ee3b637b136524aecb35427e3e560
-  "cyrillic.doc.tar.xz:"	bd12131ff57fec190bf97197ca4f8bf4c6c7e05f
-  "cyrillic.source.tar.xz:"	c5d23fdc926420d186c528d5a18fd314cd66f978
-  "cyrillic.tar.xz:"	20b775da186c5205c02ed6635387d3123f08dae8
+  "cyrillic-bin.tar.xz": 20b953836bc57be7882bedd0282d00aa9b12eb11
+  "cyrillic-bin.x86_64-linux.tar.xz": d293b8cccfbb2f65868c5989f04dca7f9192a13e
+  "cyrillic.doc.tar.xz": bd12131ff57fec190bf97197ca4f8bf4c6c7e05f
+  "cyrillic.source.tar.xz": c5d23fdc926420d186c528d5a18fd314cd66f978
+  "cyrillic.tar.xz": 20b775da186c5205c02ed6635387d3123f08dae8
