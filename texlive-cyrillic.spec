@@ -6,7 +6,7 @@
 # catalog-version undef
 Name:		texlive-cyrillic
 Version:	20110616
-Release:	4
+Release:	6
 Summary:	Support for Cyrillic fonts in LaTeX
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/macros/latex/required/cyrillic
@@ -21,7 +21,6 @@ Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/cyrillic.source.t
 # catalog-license undef
 # catalog-version undef
 Source3:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/cyrillic-bin.tar.xz
-Source4:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/cyrillic-bin.x86_64-linux.tar.xz
 BuildArch:	noarch
 BuildRequires:	texlive-tlpkg
 Requires(pre):	texlive-tlpkg
@@ -48,6 +47,8 @@ in a Cyrillic alphabet. This directory is part of the LaTeX
 %files
 %{_bindir}/rubibtex
 %{_bindir}/rumakeindex
+%{_texmfdistdir}/scripts/texlive/rubibtex.sh
+%{_texmfdistdir}/scripts/texlive/rumakeindex.sh
 %{_texmfdistdir}/tex/latex/cyrillic/cp1251.def
 %{_texmfdistdir}/tex/latex/cyrillic/cp855.def
 %{_texmfdistdir}/tex/latex/cyrillic/cp866.def
@@ -179,31 +180,16 @@ in a Cyrillic alphabet. This directory is part of the LaTeX
 
 #-----------------------------------------------------------------------
 %prep
-%setup -c -a0 -a1 -a2 -a3 -a4
+%setup -c -a0 -a1 -a2 -a3
 
 %build
 
 %install
-# shell scripts
 mkdir -p %{buildroot}%{_bindir}
-cp -fa bin/x86_64-linux/* %{buildroot}%{_bindir}
-mkdir -p %{buildroot}%{_texmfdistdir}
+pushd %{buildroot}%{_bindir}
+    ln -sf %{_texmfdistdir}/scripts/texlive/rubibtex.sh rubibtex
+    ln -sf %{_texmfdistdir}/scripts/texlive/rumakeindex.sh rumakeindex
+popd
+mkdir -p %{buildroot}%{_datadir}
+cp -fpar texmf-dist %{buildroot}%{_datadir}
 cp -fpar tex doc source %{buildroot}%{_texmfdistdir}
-
-
-%changelog
-* Wed Jan 04 2012 Paulo Andrade <pcpa@mandriva.com.br> 20110616-3
-+ Revision: 750760
-- Rebuild to reduce used resources
-
-* Tue Jan 03 2012 Paulo Andrade <pcpa@mandriva.com.br> 20110616-2
-+ Revision: 749025
-- Rebuild to reduce used resources
-
-* Sat Nov 05 2011 Paulo Andrade <pcpa@mandriva.com.br> 20110616-1
-+ Revision: 718197
-- texlive-cyrillic
-- texlive-cyrillic
-- texlive-cyrillic
-- texlive-cyrillic
-
