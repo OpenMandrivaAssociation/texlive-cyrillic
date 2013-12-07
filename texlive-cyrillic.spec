@@ -6,7 +6,7 @@
 # catalog-version undef
 Name:		texlive-cyrillic
 Version:	20110616
-Release:	9
+Release:	10
 Summary:	Support for Cyrillic fonts in LaTeX
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/macros/latex/required/cyrillic
