@@ -1,12 +1,12 @@
-# revision 23396
+# revision 33946
 # category Package
 # catalog-ctan /macros/latex/required/cyrillic
-# catalog-date 2011-06-16 20:40:55 +0200
+# catalog-date 2014-05-06 15:51:33 +0200
 # catalog-license lppl
 # catalog-version undef
 Name:		texlive-cyrillic
-Version:	20110616
-Release:	11
+Version:	20140506
+Release:	1
 Summary:	Support for Cyrillic fonts in LaTeX
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/macros/latex/required/cyrillic
@@ -14,18 +14,11 @@ License:	LPPL
 Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/cyrillic.tar.xz
 Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/cyrillic.doc.tar.xz
 Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/cyrillic.source.tar.xz
-# revision 29764
-# category TLCore
-# catalog-ctan undef
-# catalog-date undef
-# catalog-license undef
-# catalog-version undef
-Source3:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/cyrillic-bin.tar.xz
 BuildArch:	noarch
 BuildRequires:	texlive-tlpkg
 Requires(pre):	texlive-tlpkg
 Requires(post):	texlive-kpathsea
-Provides:	texlive-cyrillic-bin = %{EVRD}
+Requires:	texlive-cyrillic-bin
 
 %description
 This bundle of macros files provides macro support (including
@@ -45,10 +38,6 @@ in a Cyrillic alphabet. This directory is part of the LaTeX
 
 #-----------------------------------------------------------------------
 %files
-%{_bindir}/rubibtex
-%{_bindir}/rumakeindex
-%{_texmfdistdir}/scripts/texlive/rubibtex.sh
-%{_texmfdistdir}/scripts/texlive/rumakeindex.sh
 %{_texmfdistdir}/tex/latex/cyrillic/cp1251.def
 %{_texmfdistdir}/tex/latex/cyrillic/cp855.def
 %{_texmfdistdir}/tex/latex/cyrillic/cp866.def
@@ -180,16 +169,10 @@ in a Cyrillic alphabet. This directory is part of the LaTeX
 
 #-----------------------------------------------------------------------
 %prep
-%setup -c -a0 -a1 -a2 -a3
+%setup -c -a0 -a1 -a2
 
 %build
 
 %install
-mkdir -p %{buildroot}%{_bindir}
-pushd %{buildroot}%{_bindir}
-    ln -sf %{_texmfdistdir}/scripts/texlive/rubibtex.sh rubibtex
-    ln -sf %{_texmfdistdir}/scripts/texlive/rumakeindex.sh rumakeindex
-popd
-mkdir -p %{buildroot}%{_datadir}
-cp -fpar texmf-dist %{buildroot}%{_datadir}
+mkdir -p %{buildroot}%{_texmfdistdir}
 cp -fpar tex doc source %{buildroot}%{_texmfdistdir}
