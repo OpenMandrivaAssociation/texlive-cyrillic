@@ -1,5 +1,5 @@
 Name:		texlive-cyrillic
-Version:	20170414
+Version:	20180408
 Release:	1
 Summary:	Support for Cyrillic fonts in LaTeX
 Group:		Publishing
