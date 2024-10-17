@@ -3,7 +3,7 @@ Version:	71408
 Release:	1
 Summary:	Support for Cyrillic fonts in LaTeX
 Group:		Publishing
-URL:		http://www.ctan.org/tex-archive/macros/latex/required/cyrillic
+URL:		https://www.ctan.org/tex-archive/macros/latex/required/cyrillic
 License:	LPPL
 Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/cyrillic.r%{version}.tar.xz
 Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/cyrillic.doc.r%{version}.tar.xz
