@@ -13,8 +13,6 @@ Source1:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/cyrillic.doc.r%{
 Source2:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/cyrillic.source.r%{tl_revision}.tar.xz
 BuildArch:	noarch
 BuildSystem:	texlive
-BuildRequires:	texlive-tlpkg
-%texlive_base_requires
 Requires:	texlive(cyrillic-bin)
 Provides:	texlive(%{tl_name}) = %{tl_revision}
 
